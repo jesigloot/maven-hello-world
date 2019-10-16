@@ -4,7 +4,7 @@
 
     <groupId>se.jsimo.hello.maven</groupId>
     <artifactId>hello-world-maven</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
