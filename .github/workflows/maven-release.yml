@@ -12,4 +12,6 @@ jobs:
         with:
           java-version: 11
       - name: Deploy with Maven
-        run: mvn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn --settings settings.xml deploy
