@@ -8,6 +8,6 @@ public class helloTest {
 
   @Test
   void verifyHelloReturnsAString() {
-    assertNotNull(hello.getHelloString());
+    assertNotNull(Hello.getHelloString());
   }
 }

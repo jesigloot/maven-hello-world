@@ -1,6 +1,6 @@
 package se.jsimo.hello;
 
-public class hello {
+public class Hello {
   private static String helloString = "Hello world!";
 
   public static void main(String[] args) {
