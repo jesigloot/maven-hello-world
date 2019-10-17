@@ -14,12 +14,12 @@ jobs:
         with:
           java-version: 11
       - name: Build with Maven
-        run: mvn package --file pom.xml
+        run: mvn -B package --file pom.xml
 
       - name: Test with Maven
-        run: mvn test
+        run: mvn -B test
 
       - name: Deploy with Maven
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn --settings settings.xml deploy
+        run: mvn -B --settings settings.xml deploy

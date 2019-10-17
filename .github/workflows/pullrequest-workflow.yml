@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: 11
       - name: Build with Maven
-        run: mvn package --file pom.xml
+        run: mvn -B package
   test:
     runs-on: ubuntu-latest
     steps:
@@ -25,4 +25,12 @@ jobs:
         with:
           java-version: 11
       - name: Test with Maven
-        run: mvn test
+        run: mvn -B test
+  lint-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: |
+          npm i @commitlint/{config-angular,cli} -D
+          npx commitlint -x "@commitlint/config-angular" --from=origin/master --to=HEAD
