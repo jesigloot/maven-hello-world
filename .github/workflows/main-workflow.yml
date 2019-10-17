@@ -24,7 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-      - run: |
+      - name: Tag using semantic release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           npm i @semantic-release/exec -D
           npx semantic-release@beta
 
