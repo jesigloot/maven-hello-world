@@ -34,3 +34,13 @@ jobs:
       - run: |
           npm i @commitlint/{config-angular,cli} -D
           npx commitlint -x "@commitlint/config-angular" --from=origin/master --to=HEAD
+  comment:
+    runs-on: ubuntu-latest
+    needs: [build, test, lint-commit]
+    if: failure()
+    steps:
+      - uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            github.issues.createComment({...context.issue, body: '💥 failed :<'})
