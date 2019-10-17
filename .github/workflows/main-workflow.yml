@@ -29,7 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm i @semantic-release/exec -D
-          npx semantic-release@beta
+          npx semantic-release@beta --branch master
 
   release:
     runs-on: ubuntu-latest
