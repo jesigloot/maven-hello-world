@@ -29,7 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm i @semantic-release/exec -D
-          npx semantic-release@beta --branch master
+          npx semantic-release@beta
 
   release:
     runs-on: ubuntu-latest
@@ -42,4 +42,7 @@ jobs:
       - name: Deploy with Maven
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -B --settings settings.xml deploy
+        run: |
+          git fetch --tags
+          export VERSION=$(git describe --tags)
+          mvn -B --settings settings.xml -Drevision=$VERSION -Dmaven.test.skip=true deploy
