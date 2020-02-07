@@ -41,7 +41,7 @@ jobs:
           java-version: 11
       - name: Deploy with Maven
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN2 }}
         run: |
           export VERSION=$(git describe --tags)
           mvn -B --settings settings.xml -Drevision=$VERSION -Dmaven.test.skip=true deploy
